@@ -163,7 +163,7 @@ button:focus-visible{outline:2px solid var(--accent)}
 </header>
 
 <nav class="toc" aria-label="Seções">
-  <a href="#pendencias">Pendências</a><a href="#visao">Visão geral</a><a href="#cronograma">Cronograma</a><a href="#checklist">Checklist</a><a href="#roteiro">Roteiro da noite</a><a href="#cardapio">Cardápio</a><a href="#dj">DJ</a><a href="#decoracao">Decoração e convites</a><a href="#seguranca">Supervisão e segurança</a>
+  <a href="#pendencias">Pendências</a><a href="#visao">Visão geral</a><a href="#cronograma">Cronograma</a><a href="#checklist">Checklist</a><a href="#convidados">Convidados</a><a href="#roteiro">Roteiro da noite</a><a href="#cardapio">Cardápio</a><a href="#dj">DJ</a><a href="#decoracao">Decoração e convites</a><a href="#seguranca">Supervisão e segurança</a>
 </nav>
 
 <section id="pendencias">
@@ -222,6 +222,15 @@ button:focus-visible{outline:2px solid var(--accent)}
   <div class="chk-group" id="chklist"></div>
 </section>
 
+<section id="convidados">
+  <h2>Lista de convidados</h2>
+  <p class="lead">26 nomes enviados em 22/11. Marque quem confirmou e anote o que precisar. Essa mesma lista serve na porta, na entrada e na saída. As anotações ficam salvas só neste navegador.</p>
+  <div class="chk-tools"><div class="progress" aria-hidden="true"><i id="gbar"></i></div><span class="num" id="gprog">0 de 26 confirmados</span></div>
+  <div class="tbl"><table>
+    <thead><tr><th>#</th><th>Convidado</th><th>Confirmou</th><th>Observação</th></tr></thead>
+    <tbody id="guest-body"></tbody>
+  </table></div>
+</section>
 
 <section id="roteiro">
   <h2>Roteiro da noite</h2>
@@ -361,6 +370,25 @@ button:focus-visible{outline:2px solid var(--accent)}
     box.querySelectorAll('input[type=checkbox]').forEach(function(c,i){c.checked=!!itens[i][3]});prog()});
   prog();
 
+  // Convidados
+  var nomes=['Ana','Bruna','Bia','Camila','João','Davi','Elisa','Eduardo','Fenana','Giovana','Guilherme','Helenal','Jorge','Luiza A.','Luiza V.','Marilu','Maria A.','Maria C.','Mateus','Noguchi','Sofia','Perera','Ruan','Yasmim','Temperani','Julia'];
+  var GKEY='festa-helena-conv', g={};
+  try{g=JSON.parse(localStorage.getItem(GKEY)||'{}')||{}}catch(e){g={}}
+  function gsave(){try{localStorage.setItem(GKEY,JSON.stringify(g))}catch(e){}}
+  function gprog(){var n=0;nomes.forEach(function(_,i){if(g['c'+i])n++});
+    document.getElementById('gprog').textContent=n+' de '+nomes.length+' confirmados';
+    document.getElementById('gbar').style.width=(100*n/nomes.length)+'%'}
+  var gb=document.getElementById('guest-body');
+  nomes.forEach(function(nm,i){
+    var tr=document.createElement('tr');
+    tr.innerHTML='<td class="num">'+(i+1)+'</td><td><b>'+nm+'</b></td><td><input type="checkbox" id="gc-'+i+'" aria-label="'+nm+' confirmou" style="width:18px;height:18px;accent-color:var(--ok)"></td><td><input type="text" class="who" id="gr-'+i+'" aria-label="Responsável de '+nm+'" placeholder="Observação" style="width:100%;max-width:none"></td>';
+    var c=tr.querySelector('input[type=checkbox]'), r=tr.querySelector('input[type=text]');
+    c.checked=!!g['c'+i]; r.value=g['r'+i]||'';
+    c.addEventListener('change',function(){g['c'+i]=c.checked;gsave();gprog()});
+    r.addEventListener('input',function(){g['r'+i]=r.value;gsave()});
+    gb.appendChild(tr);
+  });
+  gprog();
 
   // Cardápio e orçamento
   var CASA=9;
