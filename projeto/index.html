@@ -157,7 +157,7 @@ button:focus-visible{outline:2px solid var(--accent)}
     <div class="fact"><span class="label">Quando</span><b>Sexta, 11/12/2026 · 18h30 às 23h</b></div>
     <div class="fact"><span class="label">Onde</span><b>Localização no WhatsApp</b></div>
     <div class="fact"><span class="label">Dress code</span><b>Fantasia / all black</b></div>
-    <div class="fact"><span class="label">Quem</span><b>26 amigos da escola e 9 adultos da família</b></div>
+    <div class="fact"><span class="label">Quem</span><b>26 amigos da escola e 11 da família</b></div>
   </div>
   <div class="count"><span class="big num" id="dias">19</span><span id="dias-txt">dias até a festa</span></div>
 </header>
@@ -174,7 +174,7 @@ button:focus-visible{outline:2px solid var(--accent)}
     </div>
     <div class="pend-grid">
       <div class="pitem"><span class="q">Nº de convidados</span><span class="a">26 amigos da escola <span class="chip sup">AGUARDANDO CONFIRMAÇÃO FINAL</span></span></div>
-      <div class="pitem"><span class="q">Família</span><span class="a">9 adultos (prima e 2 adultos viajando) <span class="chip ok">DEFINIDO</span></span></div>
+      <div class="pitem"><span class="q">Família</span><span class="a">11 pessoas: Andre e Larissa, Helena, Ester (4 anos), Vovó Vera, Aline, Érika, Flavio, Graça, Dario e Dulce. Ester não conta para o buffet <span class="chip sup">AGUARDANDO CONFIRMAÇÃO FINAL</span></span></div>
       <div class="pitem"><span class="q">DJ</span><span class="a">Contratar até 27/11 <span class="chip urg">URGENTE</span></span></div>
       <div class="pitem"><span class="q">Comida</span><span class="a">Buffet de pizza (opção 1, vale como orçamento), docinhos, bolo e cheesecake <span class="chip sup">AGUARDANDO ESCOLHA</span></span></div>
       <div class="pitem"><span class="q">Bebidas</span><span class="a">Refrigerante e suco comprados à parte <span class="chip ok">DEFINIDO</span></span></div>
@@ -187,7 +187,7 @@ button:focus-visible{outline:2px solid var(--accent)}
 
 <section id="visao">
   <h2>Visão geral</h2>
-  <p class="lead">Uma noite de sexta-feira em casa, com DJ, pista de dança e comida de festa simples. Vêm 26 amigos da escola. Da família, vêm 9 adultos, que também ajudam a acompanhar a turma.</p>
+  <p class="lead">Uma noite de sexta-feira em casa, com DJ, pista de dança e comida de festa simples. Vêm 26 amigos da escola. Da família, vêm 11 pessoas (entre elas a Ester, de 4 anos), e os adultos também ajudam a acompanhar a turma.</p>
   <div class="cards">
     <div class="card"><span class="label">Formato</span><span class="v">Festa à fantasia</span><span class="d">Dress code: fantasia ou all black. Sem concurso</span></div>
     <div class="card"><span class="label">Duração</span><span class="v num">4h30</span><span class="d">Recepção 18h30, saída 23h</span></div>
@@ -250,7 +250,7 @@ button:focus-visible{outline:2px solid var(--accent)}
 <section id="cardapio">
   <h2>Cardápio e quantidades</h2>
   <p class="lead">Quantidades para adolescentes numa festa de 4h30 com buffet de pizza. Mude o número de convidados e tudo recalcula, inclusive o orçamento.</p>
-  <div class="calc"><label for="conv"><b>Convidados</b></label><input id="conv" type="number" min="5" max="150" value="26" inputmode="numeric"><span class="d">+ <span id="casa">6</span> adultos da família</span>
+  <div class="calc"><label for="conv"><b>Convidados</b></label><input id="conv" type="number" min="5" max="150" value="26" inputmode="numeric"><span class="d">+ <span id="casa">10</span> da família (Ester, 4 anos, não conta)</span>
     <span id="gar-wrap"><label for="gar"><b>Garçons</b></label> <input id="gar" type="number" min="1" max="6" value="2" inputmode="numeric" style="width:64px"></span></div>
   <div class="tbl"><table>
     <thead><tr><th>Item</th><th>Por pessoa</th><th class="r">Total</th><th>Dica</th></tr></thead>
@@ -296,7 +296,7 @@ button:focus-visible{outline:2px solid var(--accent)}
 
 <section id="seguranca">
   <h2>Supervisão e segurança</h2>
-  <p class="lead">Não há adultos de fora da família. A supervisão fica com os anfitriões e os 9 adultos da família, o que passa com folga da referência de um adulto para cada dez adolescentes. Basta escalar três ou quatro deles para as funções abaixo.</p>
+  <p class="lead">Não há adultos de fora da família. A supervisão fica com os anfitriões e os adultos da família, o que passa com folga da referência de um adulto para cada dez adolescentes. Basta escalar três ou quatro deles para as funções abaixo.</p>
   <div class="two">
     <div class="box"><h3>Equipe de apoio</h3><ul><li><b>Porta:</b> lista de convidados, entrada e saída</li><li><b>Cozinha:</b> reposição de comida e bebida</li><li><b>Circulação:</b> pista, quintal e banheiros</li><li>Equipe discreta, presente sem atrapalhar a festa</li></ul></div>
     <div class="box"><h3>Regras da casa</h3><ul><li>Bebida alcoólica proibida, inclusive para a equipe</li><li>Portão fechado; ninguém sai sozinho antes do horário sem aviso ao responsável</li><li>Quartos e áreas de risco fechados; piscina isolada, se houver</li></ul></div>
@@ -391,7 +391,7 @@ button:focus-visible{outline:2px solid var(--accent)}
   gprog();
 
   // Cardápio e orçamento
-  var CASA=9;
+  var CASA=10;
   function fmt(n){return n.toLocaleString('pt-BR',{style:'currency',currency:'BRL',maximumFractionDigits:0})}
   function calc(){
     var c=parseInt(document.getElementById('conv').value,10); if(!(c>=5))c=5; if(c>150)c=150;
